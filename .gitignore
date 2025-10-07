@@ -1,6 +1,7 @@
 # VS / .NET
 .vs/
 bin/
+bin/*
 obj/
 TestResults/
 *.user
