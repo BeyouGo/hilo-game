@@ -7,6 +7,8 @@ Each player tries to **guess a secret number** between a configurable range (`[M
 After each guess, the server responds whether the mystery number is **higher** or **lower** .  
 In multiplayer mode, several players compete **in real time** — the first to find the secret number wins.
 
+You can check the rules in the rules.md file.
+
 ![img.png](img/img_12.png)
 ![img_1.png](img/img_14.png)
 ![img.png](img/img_11.png)
