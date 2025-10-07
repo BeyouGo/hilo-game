@@ -68,9 +68,8 @@ HiLoGame/
 │  ├─ HiLoGame.Api/                # Projet .NET (API)
 │  ├─ HiLoGame.Application/            
 │  ├─ HiLoGame.Domain/             
-│  ├─ HiLoGame.Infrastructure/             
-│  └─ HiLoGame.Shared/             
-├─ hilogame-client/            # App Angular (Dockerfile + nginx.conf)
+│  └─ HiLoGame.Infrastructure/                          
+├─ hilogame-client/                # App Angular
 └─ docker-compose.yml
 ```
 
