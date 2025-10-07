@@ -1,0 +1,70 @@
+
+<form class="container px-0 mb-3" (ngSubmit)="createRoom()">
+  <div class="input-group">
+    <span class="input-group-text">Room</span>
+
+    <input
+      id="roomName"
+      name="roomName"
+    type="text"
+    class="form-control"
+    placeholder="Room name…"
+    required
+    [(ngModel)]="roomName" />
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!canCreateRoom()">
+      Create new room
+    </button>
+  </div>
+</form>
+
+<hr>
+
+
+<section class="card">
+  <header class="head">
+    <h3>Open Rooms</h3>
+    <div class="meta">
+      @let list = rooms();
+      @if (rooms()) {
+        <span class="pill">Rooms: {{ list.length }}</span>
+      }
+      <button class="btn" (click)="loadRooms()">Refresh</button>
+    </div>
+  </header>
+
+  @if (rooms().length) {
+    <table class="tbl">
+      <thead>
+      <tr>
+        <th>Room</th>
+        <th>Owner</th>
+        <th>Joined / Max</th>
+        <th class="actions">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (room of rooms(); track room.id) {
+          <tr>
+            <td class="name">{{ room.name }}</td>
+            <td class="owner">{{ room.ownerUsername }}</td>
+            <td class="count">{{ room.playerCount }} / {{ room.maxPlayerCount }}</td>
+            <td class="actions">
+              <button
+                class="btn primary"
+                (click)="selectRoom(room)"
+                [disabled]="selectedRoom()?.id === room.id || room.playerCount >= room.maxPlayerCount">
+                {{ selectedRoom()?.id === room.id ? 'Joined' : 'Join' }}
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <div class="empty">No rooms available.</div>
+  }
+</section>

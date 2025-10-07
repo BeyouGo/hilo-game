@@ -1,0 +1,6 @@
+@HiLoGame_HostAddress = http://localhost:5047
+
+GET {{HiLoGame_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

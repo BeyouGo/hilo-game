@@ -1,0 +1,86 @@
+[
+  {
+    "ContainingType": "HiLoGame.Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "HiLoGame.Application.Features.Authentication.LoginPlayer\u002BCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HiLoGame.Api.Controllers.AuthController",
+    "Method": "GetPlayerInfo",
+    "RelativePath": "auth/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HiLoGame.Api.Controllers.AuthController",
+    "Method": "CreatePlayer",
+    "RelativePath": "auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "HiLoGame.Application.Features.Authentication.RegisterPlayer\u002BCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HiLoGame.Api.Controllers.RoomController",
+    "Method": "Create",
+    "RelativePath": "rooms",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "HiLoGame.Application.Features.Rooms.CreateRoom\u002BCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HiLoGame.Api.Controllers.RoomController",
+    "Method": "GetPendingRooms",
+    "RelativePath": "rooms",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HiLoGame.Api.Controllers.RoomController",
+    "Method": "GetRoomLeaderboard",
+    "RelativePath": "rooms/{roomId}/leaderboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roomId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

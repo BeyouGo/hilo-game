@@ -1,0 +1,69 @@
+@if (leaderboard()) {
+  @let lb = leaderboard()!;
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header bg-white">
+      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-2">
+        <h3 class="h5 mb-0">Leaderboard</h3>
+
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <span>Winner: <strong>{{ lb.winnerUsername }}</strong></span>
+          <span class="text-body-secondary small">Finished: {{ lb.finishedAt | date}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      @if (lb.leaderboard.length > 0) {
+        <div class="table-responsive">
+          <table class="table table-sm table-hover align-middle">
+            <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Player</th>
+              <th>Attempts</th>
+              <th class="d-none d-md-table-cell">Range</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for (e of lb.leaderboard; track e.playerId; let i = $index) {
+
+                <tr [ngClass]="{'table-primary': e.playerId === lb.winnerPlayerId}" [class.disconnected]="!e.finished" >
+                  <td class="fw-bold">{{ i + 1 }}</td>
+                  <td class="text-nowrap">
+                    {{ e.playerUsername }}
+                    @if (e.playerId === lb.winnerPlayerId) {
+                      <span class="badge text-bg-success ms-2">WIN</span>
+                    }
+                  </td>
+                  <td>{{ e.attempts }}</td>
+                  <td class="d-none d-md-table-cell">
+
+
+                    @if (!e.finished) {
+                      <span class="badge text-bg-warning">DISCONNECTED</span>
+                    } @else {
+                      @if (e.playerId !== lb.winnerPlayerId) {
+                        [{{ e.lowerBound }} – {{ e.upperBound }}]
+                      } @else {
+                        <span class="badge text-bg-success">WIN</span>
+                      }
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <div class="alert alert-secondary mb-0">No entries.</div>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="card">
+    <div class="card-body">
+      <div class="text-body-secondary">Loading…</div>
+    </div>
+  </div>
+}

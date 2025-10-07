@@ -1,0 +1,39 @@
+
+
+<form (ngSubmit)="onSubmit()">
+  <h2 class="h4 text-center fw-bold mb-2">Login</h2>
+  <p class="text-body-secondary text-center mb-4">Sign in to continue</p>
+
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input
+      id="username"
+      name="username"
+      type="text"
+      class="form-control"
+      required
+      autocomplete="username"
+      [(ngModel)]="username" />
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Mot de passe</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      class="form-control"
+      required
+      autocomplete="current-password"
+      [(ngModel)]="password" />
+  </div>
+
+  <button class="btn btn-primary w-100" type="submit" [disabled]="!canSubmit()">
+    Se connecter
+  </button>
+
+  <div class="text-center mt-3">
+    <a class="link-primary" routerLink="/auth/register">Créer un compte</a>
+  </div>
+</form>
+

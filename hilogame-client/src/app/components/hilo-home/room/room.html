@@ -1,0 +1,136 @@
+@if (room()) {
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header bg-white">
+      <div class="d-flex flex-column flex-lg-row gap-2 gap-lg-3 justify-content-between align-items-lg-center">
+        <h3 class="h5 mb-0">{{ room().name }}</h3>
+
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          <span class="badge rounded-pill text-bg-primary">
+            Owner: {{ room().ownerUsername }}
+          </span>
+
+          <span class="badge rounded-pill text-bg-secondary">
+            Players: {{ players().length }}
+          </span>
+
+          <span
+            class="badge rounded-pill"
+            [ngClass]="{
+              'text-bg-success': room().status === 'started',
+              'text-bg-warning': room().status === 'awaitingPlayers',
+              'text-bg-info': room().status === 'finished',
+              'text-bg-secondary': room().status === 'closed'
+            }"
+          >
+            Status: {{ room().status }}
+          </span>
+
+          <span class="text-body-secondary small">
+            Range: {{ room().min }} – {{ room().max }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <!-- LOBBY -->
+      @if (room().status === 'awaitingPlayers') {
+        <section class="mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="text-body-secondary">Waiting for players…</div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-outline-secondary" (click)="leaveGame()">Leave room</button>
+              @if (room().ownerId === player()?.id) {
+                <button class="btn btn-primary" (click)="startGame()">Start game</button>
+              } @else {
+                <button class="btn btn-outline-secondary" disabled>Waiting for owner…</button>
+              }
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-sm table-hover align-middle mb-0">
+              <thead class="table-light">
+              <tr>
+                <th>Player</th>
+                <th class="text-nowrap">Role</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (p of players(); track p) {
+                  <tr>
+                    <td class="fw-semibold">
+                      <span class="d-inline-flex justify-content-center align-items-center rounded border me-2"
+                            style="width:28px;height:28px;">
+                        {{ (p || '?')[0] | uppercase }}
+                      </span>
+                      {{ p }}
+                    </td>
+                    <td class="text-nowrap">
+                      @if (p && room().ownerUsername === p) {
+                        <span class="badge text-bg-success">OWNER</span>
+                      }
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+      }
+
+      <!-- GAME -->
+      @if (room().status === 'started') {
+        <section class="mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <span class="text-body-secondary small me-2">Score</span>
+              <span class="fw-bold">{{ score() }}</span>
+            </div>
+            <div class="text-body-secondary">
+              Interval: ({{ lowerBound() }} ; {{ upperBound() }})
+            </div>
+          </div>
+
+          <!-- Number grid (Bootstrap d-grid + gap) -->
+          <div class="d-grid gap-2" style="grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));">
+            @for (i of numbers(); track i) {
+              <button
+                type="button"
+                class="btn btn-outline-secondary fw-bold py-2"
+                [disabled]="isEliminated(i)"
+                [ngClass]="{'opacity-50 text-decoration-line-through': isEliminated(i)}"
+                (click)="makeGuess(i)">
+                {{ i }}
+              </button>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- FINISHED -->
+      @if (room().status === 'finished') {
+        <section class="mb-3">
+          <div class="alert alert-info d-flex justify-content-between align-items-center p-2 p-sm-3 shadow-sm" role="alert">
+            <div class="d-flex align-items-center gap-2">
+              <strong>Game ended</strong>
+              <span class="text-body-secondary small d-none d-sm-inline">Check the leaderboard below.</span>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-outline-secondary btn-sm" (click)="leaveGame()">Leave game</button>
+            </div>
+          </div>
+          <app-room-leaderboard></app-room-leaderboard>
+        </section>
+      }
+
+      <!-- CLOSED -->
+      @if (room().status === 'closed') {
+        <section class="mb-3">
+          <div class="alert alert-secondary py-2 mb-0">Game closed</div>
+        </section>
+      }
+    </div>
+  </div>
+}

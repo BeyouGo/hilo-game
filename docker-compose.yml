@@ -1,0 +1,76 @@
+version: "3.9"
+
+name: hilogame-dev
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: hilogame-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Your_strong_password123!"   # change me (min 8 chars + complexity)
+      MSSQL_PID: "Developer"
+    ports:
+      - "14333:1433"  # optional: expose to host if you want SSMS to connect
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    networks:
+      - appnet
+  api:
+    build:
+      context: ./hilogame-api
+      dockerfile: HiLoGame.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+
+      # Point EF to the containerized SQL Server (NOT localhost)
+      ConnectionStrings__DataContext: "Server=db,1433;Database=hilo-db;User Id=sa;Password=Your_strong_password123!;TrustServerCertificate=True;Encrypt=False"
+
+      # If you leverage JWT env overrides, keep or remove as needed:
+      # JwtSettings__Issuer: "HiLoGame"
+      # JwtSettings__Audience: "HiLoGameClients"
+      # JwtSettings__Secret: "CHANGE-ME-TO-A-LONG-RANDOM-SECRET"
+    ports:
+      - "5047:8080"
+    depends_on:
+      db:
+        condition: service_started
+    networks:
+      - appnet
+
+  client:
+    build:
+      context: ./hilogame-client
+      dockerfile: Dockerfile
+      args:
+        - CONFIG=development
+    environment:
+      API_BASE_URL: "http://localhost:5047"
+      SIGNALR_URL: "http://localhost:5047/hubs/game"
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+    networks:
+      - appnet
+
+  tests:
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    container_name: hilogame-tests
+    working_dir: /src
+    volumes:
+      - ./hilogame-api:/src
+    command: >
+      bash -lc "
+        dotnet restore &&
+        dotnet test /p:CollectCoverage=true
+      "
+networks:
+  appnet:
+    driver: bridge
+
+volumes:
+  sqlserver_data:
+
+
