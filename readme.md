@@ -8,6 +8,9 @@ Each player tries to **guess a secret number** between a configurable range (`[M
 After each guess, the server responds whether the mystery number is **higher** or **lower** .  
 In multiplayer mode, several players compete **in real time** — the first to find the secret number wins.
 
+
+![img.png](img/img_11.png)
+
 ---
 
 ## 🔐 Authentication & Security
@@ -74,7 +77,7 @@ HiLoGame/
 ## ⚙️ Prerequisites
 
 - Docker Desktop (or Docker Engine) + Compose v2
-- Free ports: **8080** (client), **5047** (API), **14333** (SQL Server – optional)
+- Free ports: **8080** (client), **5047** (API), **14333** (SQL Server)
 
 ---
 
