@@ -1,7 +1,6 @@
 # 🎮 Hi-Lo Game – Multiplayer Edition
 
 This project is a **multiplayer implementation of the Hi-Lo game**, developed as part of a **technical interview for Gaming1**.  
-It demonstrates my ability to design, structure, and deliver a clean, maintainable backend-frontend system using **modern technologies and architectural best practices**.
 
 The goal of the game is simple:  
 Each player tries to **guess a secret number** between a configurable range (`[Min, Max]`).  
