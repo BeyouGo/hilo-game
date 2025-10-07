@@ -10,7 +10,6 @@
         "dependencies": {
           "HiLoGame.Application": "1.0.0",
           "HiLoGame.Domain": "1.0.0",
-          "HiLoGame.Shared": "1.0.0",
           "Microsoft.AspNetCore.SignalR.Core": "1.2.0",
           "Microsoft.EntityFrameworkCore": "9.0.9",
           "Microsoft.EntityFrameworkCore.Design": "9.0.9",
@@ -1365,19 +1364,6 @@
             "fileVersion": "1.0.0.0"
           }
         }
-      },
-      "HiLoGame.Shared/1.0.0": {
-        "dependencies": {
-          "HiLoGame.Application": "1.0.0",
-          "HiLoGame.Domain": "1.0.0",
-          "Microsoft.AspNetCore.SignalR.Core": "1.2.0"
-        },
-        "runtime": {
-          "HiLoGame.Shared.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -2065,11 +2051,6 @@
       "sha512": ""
     },
     "HiLoGame.Domain/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "HiLoGame.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -29,3 +29,4 @@ C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Application\obj\Debug
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Application\obj\Debug\net9.0\refint\HiLoGame.Application.dll
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Application\obj\Debug\net9.0\HiLoGame.Application.pdb
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Application\obj\Debug\net9.0\ref\HiLoGame.Application.dll
+C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Application\obj\Debug\net9.0\HiLoGame.Application.sourcelink.json

@@ -1,6 +1,5 @@
 ﻿using HiLoGame.Application.Abstractions.Realtime;
 using HiLoGame.Application.Models.Rooms;
-using HiLoGame.Shared.Realtime;
 using Microsoft.AspNetCore.SignalR;
 
 namespace HiLoGame.Infrastructure.Realtime;

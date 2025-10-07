@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HiLoGame.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c469be821c770c2e4c9350bf66ed8e95e581066")]
 [assembly: System.Reflection.AssemblyProductAttribute("HiLoGame.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HiLoGame.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

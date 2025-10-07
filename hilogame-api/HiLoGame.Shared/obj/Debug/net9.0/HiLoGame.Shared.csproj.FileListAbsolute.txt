@@ -33,3 +33,4 @@ C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Shared\obj\Debug\net9
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Shared\obj\Debug\net9.0\refint\HiLoGame.Shared.dll
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Shared\obj\Debug\net9.0\HiLoGame.Shared.pdb
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Shared\obj\Debug\net9.0\ref\HiLoGame.Shared.dll
+C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Shared\obj\Debug\net9.0\HiLoGame.Shared.sourcelink.json

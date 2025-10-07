@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLoGame.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLoGame.Tests", "HiLoGame.Tests\HiLoGame.Tests.csproj", "{3EA51E5A-27B4-4752-97C4-FD8684909AC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLoGame.Shared", "HiLoGame.Shared\HiLoGame.Shared.csproj", "{41481B0D-49B9-4A4F-AD7A-B21D8CA46476}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLoGame.Api", "HiLoGame.Api\HiLoGame.Api.csproj", "{3A0E319A-7720-17DC-6016-9B92E348B3A2}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{3EA51E5A-27B4-4752-97C4-FD8684909AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EA51E5A-27B4-4752-97C4-FD8684909AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EA51E5A-27B4-4752-97C4-FD8684909AC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41481B0D-49B9-4A4F-AD7A-B21D8CA46476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41481B0D-49B9-4A4F-AD7A-B21D8CA46476}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41481B0D-49B9-4A4F-AD7A-B21D8CA46476}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41481B0D-49B9-4A4F-AD7A-B21D8CA46476}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3A0E319A-7720-17DC-6016-9B92E348B3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3A0E319A-7720-17DC-6016-9B92E348B3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A0E319A-7720-17DC-6016-9B92E348B3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU

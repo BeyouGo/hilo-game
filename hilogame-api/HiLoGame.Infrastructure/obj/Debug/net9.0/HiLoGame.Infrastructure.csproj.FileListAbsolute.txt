@@ -26,10 +26,8 @@ C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\De
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\Debug\net9.0\HiLoGame.Infrastructure.pdb
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\Debug\net9.0\HiLoGame.Application.dll
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\Debug\net9.0\HiLoGame.Domain.dll
-C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\Debug\net9.0\HiLoGame.Shared.dll
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\Debug\net9.0\HiLoGame.Application.pdb
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\Debug\net9.0\HiLoGame.Domain.pdb
-C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\bin\Debug\net9.0\HiLoGame.Shared.pdb
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\Debug\net9.0\HiLoGame.Infrastructure.csproj.AssemblyReference.cache
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\Debug\net9.0\HiLoGame.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\Debug\net9.0\HiLoGame.Infrastructure.AssemblyInfoInputs.cache
@@ -41,3 +39,4 @@ C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\De
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\Debug\net9.0\HiLoGame.Infrastructure.pdb
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\Debug\net9.0\HiLoGame.Infrastructure.genruntimeconfig.cache
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\Debug\net9.0\ref\HiLoGame.Infrastructure.dll
+C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Infrastructure\obj\Debug\net9.0\HiLoGame.Infrastructure.sourcelink.json

@@ -10,8 +10,8 @@ using System.Text.Json.Serialization;
 using HiLoGame.Infrastructure.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using HiLoGame.Domain.Aggregates.Player;
-using HiLoGame.Shared.Realtime;
 using HiLoGame.Api.Middlewares;
+using HiLoGame.Infrastructure.Realtime;
 using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1507,35 +1507,42 @@
     ]
   },
   "packageFolders": {
-    "/root/.nuget/packages/": {}
+    "C:\\Users\\Mehdi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/src/HiLoGame.Shared/HiLoGame.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\Mehdi\\source\\repos\\HiLoGame\\hilogame-api\\HiLoGame.Shared\\HiLoGame.Shared.csproj",
       "projectName": "HiLoGame.Shared",
-      "projectPath": "/src/HiLoGame.Shared/HiLoGame.Shared.csproj",
-      "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/src/HiLoGame.Shared/obj/",
+      "projectPath": "C:\\Users\\Mehdi\\source\\repos\\HiLoGame\\hilogame-api\\HiLoGame.Shared\\HiLoGame.Shared.csproj",
+      "packagesPath": "C:\\Users\\Mehdi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mehdi\\source\\repos\\HiLoGame\\hilogame-api\\HiLoGame.Shared\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/root/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Mehdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/src/HiLoGame.Application/HiLoGame.Application.csproj": {
-              "projectPath": "/src/HiLoGame.Application/HiLoGame.Application.csproj"
+            "C:\\Users\\Mehdi\\source\\repos\\HiLoGame\\hilogame-api\\HiLoGame.Application\\HiLoGame.Application.csproj": {
+              "projectPath": "C:\\Users\\Mehdi\\source\\repos\\HiLoGame\\hilogame-api\\HiLoGame.Application\\HiLoGame.Application.csproj"
             },
-            "/src/HiLoGame.Domain/HiLoGame.Domain.csproj": {
-              "projectPath": "/src/HiLoGame.Domain/HiLoGame.Domain.csproj"
+            "C:\\Users\\Mehdi\\source\\repos\\HiLoGame\\hilogame-api\\HiLoGame.Domain\\HiLoGame.Domain.csproj": {
+              "projectPath": "C:\\Users\\Mehdi\\source\\repos\\HiLoGame\\hilogame-api\\HiLoGame.Domain\\HiLoGame.Domain.csproj"
             }
           }
         }
@@ -1550,7 +1557,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -1577,7 +1584,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

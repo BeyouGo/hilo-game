@@ -2,9 +2,9 @@
 
 namespace HiLoGame.Shared.Extensions;
 
-public static class UserManagerExtensions2
+public static class UserManagerExtensions
 {
-    public static string GetId2(this ClaimsPrincipal user) // Can't return null 
+    public static string GetId(this ClaimsPrincipal user) // Can't return null 
     {
         return user.Claims.First(s => s.Type == ClaimTypes.NameIdentifier).Value;
     }

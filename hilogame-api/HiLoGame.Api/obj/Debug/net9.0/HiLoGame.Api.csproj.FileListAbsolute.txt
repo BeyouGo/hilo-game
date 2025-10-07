@@ -627,3 +627,4 @@ C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Api\obj\Debug\net9.0\
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Api\obj\Debug\net9.0\HiLoGame.Api.pdb
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Api\obj\Debug\net9.0\HiLoGame.Api.genruntimeconfig.cache
 C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Api\obj\Debug\net9.0\ref\HiLoGame.Api.dll
+C:\Users\Mehdi\source\repos\HiLoGame\hilogame-api\HiLoGame.Api\obj\Debug\net9.0\HiLoGame.Api.sourcelink.json

@@ -1,9 +1,9 @@
 ﻿using HiLoGame.Application.Abstractions.Realtime;
 using HiLoGame.Application.Services;
-using HiLoGame.Shared.Extensions;
 using Microsoft.AspNetCore.SignalR;
+using System.Security.Claims;
 
-namespace HiLoGame.Shared.Realtime;
+namespace HiLoGame.Infrastructure.Realtime;
 
 public class HiLoGameHub : Hub<IHiLoGameClient>
 {
@@ -12,6 +12,8 @@ public class HiLoGameHub : Hub<IHiLoGameClient>
 
     private static string ToRoomGroup(Guid roomId) => $"room:{roomId}";
     private static string ToCallerGroup(string playerId, Guid roomId) => $"player:{playerId}:room:{roomId}";
+
+    public string GetId(ClaimsPrincipal user) => user.Claims.First(s => s.Type == ClaimTypes.NameIdentifier).Value;
 
     public HiLoGameHub(IRoomService rooms, IGameNotifier gameNotifier)
     {
@@ -22,7 +24,7 @@ public class HiLoGameHub : Hub<IHiLoGameClient>
     public async Task JoinRoom(Guid roomId)
     {
 
-        var playerId = Context.User.GetId();
+        var playerId = GetId(Context.User);
 
         await Groups.AddToGroupAsync(Context.ConnectionId, ToRoomGroup(roomId));
         await Groups.AddToGroupAsync(Context.ConnectionId, ToCallerGroup(playerId, roomId));
@@ -35,7 +37,7 @@ public class HiLoGameHub : Hub<IHiLoGameClient>
     public async Task LeaveRoom(Guid roomId)
     {
 
-        var playerId = Context.User.GetId();
+        var playerId = GetId(Context.User);
 
         await _rooms.LeaveAsync(roomId, playerId, CancellationToken.None);
 
@@ -45,7 +47,7 @@ public class HiLoGameHub : Hub<IHiLoGameClient>
 
     public async Task StartGame(Guid roomId)
     {
-        var playerId = Context.User.GetId();
+        var playerId = GetId(Context.User);
 
         await _rooms.StartAsync(roomId, playerId, CancellationToken.None);
         await _gameNotifier.GameStarted(roomId);
@@ -53,7 +55,7 @@ public class HiLoGameHub : Hub<IHiLoGameClient>
 
     public async Task MakeGuess(Guid roomId, int guess)
     {
-        var playerId = Context.User.GetId();
+        var playerId = GetId(Context.User);
         var guessResponse = await _rooms.MakeGuess(roomId, playerId, guess, CancellationToken.None);
         await _gameNotifier.GuessFeedback(roomId, playerId, guessResponse);
     }
@@ -62,7 +64,7 @@ public class HiLoGameHub : Hub<IHiLoGameClient>
     // Make sure we also clean up if the browser closes or the network drops
     public override async Task OnDisconnectedAsync(Exception? exception)
     {
-        var playerId = Context.User?.GetId();
+        var playerId = GetId(Context.User);
         if (!string.IsNullOrEmpty(playerId))
         {
             // Ask the domain which rooms this player was in, and leave them all.
