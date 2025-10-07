@@ -1,1 +1,21 @@
-/.idea/
+# VS / .NET
+.vs/
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+
+# Angular / Node
+node_modules/
+dist/
+.cache/
+coverage/
+.idea/
+
+# OS / misc
+Thumbs.db
+*.log
+*.tmp
+.env
+.DS_Store
