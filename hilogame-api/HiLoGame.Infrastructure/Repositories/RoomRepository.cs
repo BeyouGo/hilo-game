@@ -20,9 +20,14 @@ public class RoomRepository(HiLoGameDbContext context) : IRoomRepository
             .FirstOrDefaultAsync(s => s.Id == roomId, ct);
     }
 
-    public IQueryable<Room> QueryAllAwaitingPlayer()
+    public IQueryable<Room> QueryAllByStatus(ERoomStatus? status)
     {
-        return context.Rooms.Where(s => s.Status == ERoomStatus.AwaitingPlayers);
+        if (!status.HasValue)
+        {
+            return context.Rooms;
+        }
+
+        return context.Rooms.Where(s => s.Status == status);
     }
 
     public async Task<IList<Room>> GetRoomsByPlayerIdAsync(string playerId, CancellationToken ct)

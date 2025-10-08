@@ -30,10 +30,18 @@ public class RoomConfig : IEntityTypeConfiguration<Room>
 
         b.Property(r => r.OwnerId)
             .IsRequired()
-            .HasMaxLength(450); // taille clé AspNetUsers
+            .HasMaxLength(450); 
 
         b.Property(r => r.OwnerUsername)
             .IsRequired()
+            .HasMaxLength(255);
+
+        b.Property(r => r.WinnerPlayerId)
+            .IsRequired(false)
+            .HasMaxLength(450);
+
+        b.Property(r => r.WinnerPlayerUsername)
+            .IsRequired(false)
             .HasMaxLength(255);
 
 
@@ -45,6 +53,8 @@ public class RoomConfig : IEntityTypeConfiguration<Room>
         // Concurrency token (shadow)
         b.Property<byte[]>("RowVersion").IsRowVersion();
 
+
+
         // (Optionnel) Relation vers AspNetUsers si tu veux une contrainte FK
         // b.HasOne<Player>()
         //  .WithMany()
@@ -52,8 +62,6 @@ public class RoomConfig : IEntityTypeConfiguration<Room>
         //  .OnDelete(DeleteBehavior.Restrict);
 
         // --- Collection avec backing field _players ---
-
-
 
         // Map the collection via the NAVIGATION (not the field)
         b.HasMany(r => r.Players)
@@ -69,6 +77,6 @@ public class RoomConfig : IEntityTypeConfiguration<Room>
 
         // Index utiles
         b.HasIndex(r => r.OwnerId);
-        b.HasIndex(r => new { r.Name, r.CreatedAt });
+        b.HasIndex(r => new { r.Status, r.CreatedAt });
     }
 }

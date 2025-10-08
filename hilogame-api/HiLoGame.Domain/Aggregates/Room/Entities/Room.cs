@@ -12,8 +12,11 @@ public class Room
     public int Secret { get; private set; } // <= secret number
     public ERoomStatus Status { get; set; }
     public string? WinnerPlayerId { get; private set; }
+    public string WinnerPlayerUsername { get; set; }
+
     public string OwnerId { get; private set; }
     public string OwnerUsername { get; private set; }
+
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     //RowVersion is added directly from RoomConfig.cs.
@@ -117,7 +120,9 @@ public class Room
             //Should end the game for all players
 
             Status = ERoomStatus.Finished;
+
             WinnerPlayerId = playerId;
+            WinnerPlayerUsername = rp.PlayerUsername;
 
             foreach (var player in _players.Where(s => s.Status == ERoomPlayerStatus.Playing))
             {
@@ -157,6 +162,7 @@ public class Room
                 rp.SecretIsLessThan) ;
         }
     }
+
 
     public void RemovePlayer(string playerId)
     {

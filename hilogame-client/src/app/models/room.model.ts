@@ -32,7 +32,8 @@ export interface Room {
   ownerUsername: string;
   createdAt: Date;
   status: ERoomStatus;
-  winnerPlayer: string;
+  winnerPlayerId: string;
+  winnerPlayerUsername: string;
   playerCount: number;
   roomPlayers: { id: string; username: string }[];
 }

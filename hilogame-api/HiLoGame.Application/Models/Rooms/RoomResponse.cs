@@ -13,10 +13,12 @@ public class RoomResponse
     public string OwnerId { get; set; } = "";
     public string OwnerUsername { get; set; } = "";
     public string? WinnerPlayerId { get; init; }
+    public string? WinnerPlayerUsername { get; init; }
     public int PlayerCount { get; init; }
 
     public List<RoomPlayerResponse> RoomPlayers { get; set; } = [];
     public ERoomStatus Status { get; set; }
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// Warning: Room should already be in-memory !
@@ -42,12 +44,14 @@ public static class RoomResponseExtensions
         r => new RoomResponse
         {
             Id = r.Id,
+            CreatedAt = r.CreatedAt,
             Name = r.Name,
             Min = r.Rules.Min,
             Max = r.Rules.Max,
             MaxPlayerCount = r.Rules.MaxPlayers,
             Status = r.Status,
             WinnerPlayerId = r.WinnerPlayerId,
+            WinnerPlayerUsername = r.WinnerPlayerUsername,
             OwnerId = r.OwnerId,
             OwnerUsername = r.OwnerUsername,
             PlayerCount = r.Players.Count, // server-side COUNT(*)

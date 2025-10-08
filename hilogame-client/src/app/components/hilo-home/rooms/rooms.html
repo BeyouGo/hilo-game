@@ -1,4 +1,3 @@
-
 <form class="container px-0 mb-3" (ngSubmit)="createRoom()">
   <div class="input-group">
     <span class="input-group-text">Room</span>
@@ -6,16 +5,17 @@
     <input
       id="roomName"
       name="roomName"
-    type="text"
-    class="form-control"
-    placeholder="Room name…"
-    required
-    [(ngModel)]="roomName" />
+      type="text"
+      class="form-control"
+      placeholder="Room name…"
+      required
+      [ngModel]="roomName()"
+      (ngModelChange)="roomName.set($event)" />
 
     <button
       type="submit"
       class="btn btn-primary"
-      [disabled]="!canCreateRoom()">
+      [disabled]="!canCreateRoom() || loading()">
       Create new room
     </button>
   </div>
@@ -23,21 +23,34 @@
 
 <hr>
 
-
 <section class="card">
-  <header class="head">
-    <h3>Open Rooms</h3>
-    <div class="meta">
-      @let list = rooms();
-      @if (rooms()) {
-        <span class="pill">Rooms: {{ list.length }}</span>
-      }
-      <button class="btn" (click)="loadRooms()">Refresh</button>
+  <header class="head d-flex justify-content-between align-items-center">
+    <h3 class="mb-0">Rooms</h3>
+    <div class="d-flex align-items-center gap-2">
+      <label for="status" class="form-label mb-0 me-1 text-muted small">Status:</label>
+      <select
+        id="status"
+        class="form-select form-select-sm w-auto"
+        [ngModel]="statusFilter()"
+        (ngModelChange)="onStatusChange($event)">
+        @for (s of statuses; track s) {
+          <option [value]="s">{{ s | titlecase }}</option>
+        }
+      </select>
+
+      <button class="btn btn-outline-secondary btn-sm" (click)="loadRooms()" [disabled]="loading()">
+        Refresh
+      </button>
     </div>
   </header>
 
+  <hr class="my-2">
+
+  <!-- Top pager -->
+
+
   @if (rooms().length) {
-    <table class="tbl">
+    <!--<table class="tbl">
       <thead>
       <tr>
         <th>Room</th>
@@ -56,15 +69,78 @@
               <button
                 class="btn primary"
                 (click)="selectRoom(room)"
-                [disabled]="selectedRoom()?.id === room.id || room.playerCount >= room.maxPlayerCount">
+                [disabled]="selectedRoom()?.id === room.id || room.playerCount >= room.maxPlayerCount || loading()">
                 {{ selectedRoom()?.id === room.id ? 'Joined' : 'Join' }}
               </button>
             </td>
           </tr>
         }
       </tbody>
+    </table>-->
+
+
+    <table class="tbl">
+      <thead>
+      <tr>
+        <th>Room</th>
+        <th>Owner</th>
+        <th>Status</th>
+        <th>Joined / Max</th>
+        <th class="actions">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (room of rooms(); track room.id) {
+          <tr>
+            <td class="name">{{ room.name }}</td>
+            <td class="owner">{{ room.ownerUsername }}</td>
+            <td class="status">{{ room.status | titlecase }}</td>
+            <td class="count">{{ room.playerCount }} / {{ room.maxPlayerCount }}</td>
+            <td class="actions">
+              @if (room.status === 'finished') {
+                <span class="badge bg-success">
+              Winner: {{ room.winnerPlayerUsername || '—' }}
+            </span>
+              } @else if (room.status === 'awaitingPlayers') {
+                <button
+                  class="btn primary"
+                  (click)="selectRoom(room)"
+                  [disabled]="selectedRoom()?.id === room.id || room.playerCount >= room.maxPlayerCount || loading()">
+                  {{ selectedRoom()?.id === room.id ? 'Joined' : 'Join' }}
+                </button>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
     </table>
+
+    <nav class="d-flex justify-content-between align-items-center mt-3">
+      <div>
+        <small class="text-muted">
+          Showing <strong>{{ fromIndex() }}</strong>–<strong>{{ toIndex() }}</strong> of <strong>{{ total() }}</strong>
+        </small>
+      </div>
+
+      <ul class="pagination pagination-sm mb-0">
+        <li class="page-item" [class.disabled]="page() === 1 || loading()">
+          <button class="page-link" (click)="prev()" [disabled]="page() === 1 || loading()">«</button>
+        </li>
+
+        <li class="page-item disabled">
+      <span class="page-link bg-light text-dark border-0">
+        Page {{ page() }} / {{ totalPages() }}
+      </span>
+        </li>
+
+        <li class="page-item" [class.disabled]="page() === totalPages() || loading()">
+          <button class="page-link" (click)="next()" [disabled]="page() === totalPages() || loading()">»</button>
+        </li>
+      </ul>
+    </nav>
   } @else {
-    <div class="empty">No rooms available.</div>
+    <div class="empty">
+      @if (loading()) { Loading… } @else { No rooms available. }
+    </div>
   }
 </section>

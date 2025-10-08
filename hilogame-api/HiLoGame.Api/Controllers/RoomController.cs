@@ -1,4 +1,5 @@
 using HiLoGame.Application.Features.Rooms;
+using HiLoGame.Domain.Aggregates.Room.Entities;
 using HiLoGame.Shared.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,11 +17,18 @@ public class RoomController(IMediator mediator) : ControllerBase
         return Ok(await mediator.Send(command, ct));
     }
 
+    // GET /rooms?status=awaitingPlayers&page=1&pageSize=10
     [HttpGet]
-    public async Task<IActionResult> GetPendingRooms(CancellationToken ct)
+    public async Task<IActionResult> GetRooms([FromQuery] ERoomStatus status = ERoomStatus.AwaitingPlayers, [FromQuery] int page = 1, [FromQuery] int pageSize = 10, CancellationToken ct = default)
     {
-        var dto = await mediator.Send(new GetAwaitingPlayersRooms.Query(), ct);
-        return Ok(dto);
+        var result = await mediator.Send(new GetRoomsPage.Query
+        {
+            Status = status,
+            Page = page,
+            PageSize = pageSize
+        }, ct);
+
+        return Ok(result);
     }
 
 

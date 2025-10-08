@@ -34,7 +34,7 @@ export class RoomComponent {
 
   // Computed
   public room = computed<Room>(() => {
-    return this.roomService.currentRoom()!;
+    return this.roomService.currentRoom()!; // never null here !
   })
 
   public score = computed(() => {

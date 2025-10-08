@@ -4,6 +4,7 @@ using HiLoGame.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HiLoGame.Infrastructure.Migrations
 {
     [DbContext(typeof(HiLoGameDbContext))]
-    partial class HiLoGameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251008084420_UpdateWinnerPlayerUserame")]
+    partial class UpdateWinnerPlayerUserame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,18 +136,17 @@ namespace HiLoGame.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WinnerPlayerId")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WinnerPlayerUsername")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OwnerId");
 
-                    b.HasIndex("Status", "CreatedAt");
+                    b.HasIndex("Name", "CreatedAt");
 
                     b.ToTable("Rooms", (string)null);
                 });
