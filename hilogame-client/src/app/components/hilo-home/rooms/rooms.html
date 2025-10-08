@@ -47,38 +47,7 @@
   <hr class="my-2">
 
   <!-- Top pager -->
-
-
   @if (rooms().length) {
-    <!--<table class="tbl">
-      <thead>
-      <tr>
-        <th>Room</th>
-        <th>Owner</th>
-        <th>Joined / Max</th>
-        <th class="actions">Action</th>
-      </tr>
-      </thead>
-      <tbody>
-        @for (room of rooms(); track room.id) {
-          <tr>
-            <td class="name">{{ room.name }}</td>
-            <td class="owner">{{ room.ownerUsername }}</td>
-            <td class="count">{{ room.playerCount }} / {{ room.maxPlayerCount }}</td>
-            <td class="actions">
-              <button
-                class="btn primary"
-                (click)="selectRoom(room)"
-                [disabled]="selectedRoom()?.id === room.id || room.playerCount >= room.maxPlayerCount || loading()">
-                {{ selectedRoom()?.id === room.id ? 'Joined' : 'Join' }}
-              </button>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>-->
-
-
     <table class="tbl">
       <thead>
       <tr>
